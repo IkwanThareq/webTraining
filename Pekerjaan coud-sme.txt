@@ -1,0 +1,201 @@
+kerjaan baru: cloud-sme
+
+1.debug knpa selalu force close
+2.gagal upload
+3.force close tidak bisa akses applikasi ketika tidak ada koneksi 
+4.dari awal sampai login sampai menu homenya dikasih try catch termasuk obj dllnya 
+
+
+1.1 problem solving
+a. gagal upload tipe file PDF
+mulai debug
+Filepath line 129
+Filepath line 57
+MenuMainActivity line 576
+
+A. Catatan
+
+1. bagian untuk memunculkan semua file ada di All Files
+
+Penambahan: 
+1. ditambahakan    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> pada AndroidManifest.xml
+2. pada SignInFragment.java ditambahkan try catch dimulai dari baris try di 83 dan cathc dibaris 160
+3. pada MenuMainActivity.java ditambahkan Try catch dimaulai dari baris try di 313 dan catch dibaris 344
+
+Tanggal 26-03-19
+Progress 
+
+
+
+1. Menambahkan try catch Salam aplikasi 
+2. Di InfoDetailActivity di tambahkan try catch.
+3. Menambahkan pada file app_bar_storage_menu_nav dirubah jade --> app:srcCompat= pada floating action button, yang asalnya hanya android:src=...
+4. Untitled 1 log berhasil upload file.
+
+
+XXX. Masalah 
+1. Ada masalah ketika dilakukan install aplikasi menggunakan perangkat dengan OS Kitkat dengan API 19
+Dikarenakan aset yang digunakan menggunakan aset bertipe Vector.
+2. Ada masalah pas data/file Sudah ada diaplikasi, ketika akan membuka file force close dengan log pada, Untitled 2 di visual studio. Untitled 3 log lengkapnya
+3. Untuk membuat aplikasi dapat dibuat offlane disalah satu commend yg debuat developer sebelumnya harts menggunakan android 3.2 to run this function.
+4. Di menu all files terjadi force close 1x saat memilih icon search, dan icon search tersebut berubah jadi ada 2 bagian.
+
+Tanggal 27/03/19
+work update
+
+1. find download function
+2. Don't change the default method so we will try to remove try catch in some part of code in offline mode 
+that added by Iowan
+3. Try catch in file ObjectMenuFragment.java has been commend.
+4. Added getExternalFilesDir(null)), path); //NOTE: added getExternalFilesDir(null) by ikwan 27/03/19
+But the result still same
+5. Added permission ACCESS_NETWORK_STATE in android manifest
+6. Try catch already back again in ObjectMenuFragment.java in line 266
+
+
+Web Backup
+
+https://stackoverflow.com/questions/30671548/unknown-url-content-downloads-my-downloads/53021624
+https://stackoverflow.com/questions/19985286/convert-content-uri-to-actual-path-in-android-4-4/19985374#19985374
+https://github.com/flutter/flutter/issues/21863
+https://github.com/flutter/plugins/blob/9616a32faf6d1066c8f633a30f0bd7dca6fe7e9e/packages/image_picker/android/src/main/java/io/flutter/plugins/imagepicker/FileUtils.java#L66-L68
+https://www.google.com/search?safe=strict&rlz=1C5CHFA_enID837ID837&ei=UOiaXN_5ItrXz7sPjOOImA8&q=java.lang.illegalstateexception+unable+to+create+directory+%2Fstorage%2Femulated%2F0%2Fdownload&oq=IllegalStateException%3A+Unable+to+create+directory%3A+%2Fstorage&gs_l=psy-ab.1.0.0i22i30l3.13759435.13759435..13763921...0.0..0.206.206.2-1......0....2j1..gws-wiz.k-oOlylIRHs
+https://stackoverflow.com/questions/35767923/caused-by-java-lang-illegalstateexception-unable-to-create-directory-in-androi
+https://developer.android.com/training/permissions/requesting.html
+https://stackoverflow.com/questions/35767923/caused-by-java-lang-illegalstateexception-unable-to-create-directory-in-androi
+https://developer.android.com/topic/google-play-instant/faqs#general
+https://stackoverflow.com/questions/36215686/unable-to-create-directory/36215833
+https://stackoverflow.com/questions/28775949/what-path-does-getapplicationcontext-getfilesdir-return
+https://developer.android.com/reference/android/content/Context.html#getExternalFilesDir(java.lang.String)
+https://stackoverflow.com/questions/21230629/getfilesdir-vs-environment-getdatadirectory
+https://developer.android.com/reference/kotlin/android/app/DownloadManager.Request
+https://stackoverflow.com/questions/30299956/downloadmanager-doesnt-start-to-download-file
+
+
+
+
+Progress 28/03/19
+
+1. Menambahkan     <string name="pilihpaket" translatable="false">Packet Choice</string> di file Strings.
+2. Menambahkan fitur payment ada menu drawer.
+3. Menambahkan file Payment Bertipe fragment di Payment.java
+4. Menambahkan button untuk pilihan pembelian paket.
+5. Coba nanti menggunakan SHA 256 untuk di encrypt jadi kode yg unik
+
+
+D/item_code: ST 12k di mobile cloud
+
+
+Progress 29/03/19
+
+1. Menambahkan file untuk API payment.
+2. Menambahkan file Payment Response.
+3. Menambahkan file FinpayAPiClient, FinpayPayment, PaymentUtils.
+4. mer_signature default : E3049DBD6B1F1126FBE12D861C722373E404F69559A12E5489E672223741E6E4
+5. Items di unceklis diPostman 
+6. Maaf koda pembayaran gagan dibuat. Silahlan tunggu beberapa saat lagi. 
+7. Dari point 6 boat Toast atau dialog bar untuk memunculkan notifikasi bila gagal.
+
+IKWAN%50000%IKWANTHAREQ@GMAIL.COM%3%08112221545%IKWAN%FINNET123%10%CLDSME2627%FINPAY021%PAY%20190429010203
+
+Update kerjaan tanggal 1/4/19
+
+1. Menambahkan OkHttp request untuk melihat respons dari parameter yang dikirim.
+2. menggunakan retrofit untuk mengirim data (POST) ke server dengan niai balikan Json.
+3. Menambahkan cara unto conversi dari string to SHA256.
+
+
+02/4/19
+1. Make APK file. 
+2. File apk disimpan di APK rails folder
+Pass dan user name signature --> sigma123 pass sigma123
+3. 02/04/19 adding try catch di ObjectMenuFragment.
+
+
+
+04/04/19
+1. Berhasil membuat dan menampilkan hasil API pembayaran.
+2. Kode untuk di Post ke REST Api masih hard coded.
+3. Mencari shared pref function.
+
+05/04/19
+
+1. Menambahkan menu payment dan mendesainnya.
+2. Memperbaiki ketika tidal ada koneksi internet.
+3. Cek file infoDetailActivity, dan previewActivity, tumbsnailsModel, 
+4. Kode untuk PDF finpay : F1nn3t@Finpay2018
+5. for checking payment respond.
+
+API Finnet Pay Gateway : https://sandbox.finpay.co.id/servicescode/api/apiFinpay.php
+
+API Payment Process :
+
+https://sandbox.finpay.co.id/servicescode/payment-process.php
+
+6. Menu user belum bisa maju karena blm ada instruksi lbh lanjut.
+7. Account ada di AccountWatermarkFragment. Dan harus dibuat kembali layout baru.
+8. "R.string.of" dihilangkan diHardcode dengan " from "
+9. Breadcrumb position interface. Itu untuk posisi file
+
+11/04/19
+
+1. Cari TLS versi yg dissi server TLS 1.2 or SSL 3.00
+2. Certificate authority (CA) CAs that it trusts in server and android side
+3. 
+
+12/4/19
+
+1. Adding file TLSSocketFactory.java
+
+16/04/19
+
+1. Adding dialog alert for payment
+2. Remove label count using commend in file SlideshowDialogFragment.java 
+Line 99, and line 75.
+3. In fragment_slideshow_dialog.xml commend lbl_count for remove the random number in image preview.
+
+Link pending 
+
+https://www.svnlab.com/learn/connecting-to-svn-from-osx-command-line
+https://www.codota.com/code/java/methods/android.app.DownloadManager$Request/allowScanningByMediaScanner
+https://github.com/bumptech/glide/issues/1198
+https://futurestud.io/tutorials/glide-thumbnails
+https://stackoverflow.com/questions/34058000/android-downloading-a-file-from-server-getting-terminated
+https://androidclarified.com/android-downloadmanager-example/
+
+
+22/04/19
+
+1. Hapus menu user
+2. Buat 2 akun baru dengan email ikwanthareq@gmail.com & thareqyuqeu@gmail.com
+3. Upload file dan folder di akun baru tapi fail
+4. Di progress ini tidal bias upload / download Karena server penyimpanan yg rgw.starcloud mati
+
+24/04/19
+
+1. made layout payment_choice_menu for choosing payment method that user will be use.
+2. Testing API and still false in merchant signature. 
+3. Server raw.starcloud still down and can't move the progress for testing
+Upload and download menu. 
+4. has successful request API payment for vabni 
+
+
+
+
+Link pending 6/5/19
+https://awsrh.blogspot.com/2017/10/modern-profile-ui-design-in-android.html
+https://codinginflow.com/tutorials/android/toolbar
+https://www.twoh.co/2017/01/20/belajar-passing-data-antar-activity-menggunakan-intent-dan-bundle-di-android/
+https://stackoverflow.com/questions/16624233/textview-below-imageview
+
+
+Update kerjaan 14/06/19
+
+1. Menambahkan if pada aplikasi. --> }else if(response.code() == 409){
+
+             Line 860       Toast.makeText(getApplicationContext(), "file is already exist", Toast.LENGTH_SHORT).show();    // added 14/06/19
+
+Karena menampilkan error code 409 yg artinya file conflict.
+
+2. 
+
